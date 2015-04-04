@@ -1,0 +1,60 @@
+<apex:page >
+    <script type="text/javascript">
+        beenFocused = true;
+        
+        var $j = jQuery.noConflict();
+        // Account Table
+        var $accountTableBody = $j('#accountTableBody');
+
+        // Search Button
+        function doSearch() {
+            // Get AccountField
+            var account = getAccountField();
+        
+            // Get Account Name
+            var accountNameId = '{!$Component.form.block.section.accountName}';
+            account.Name = document.getElementById(accountNameId).value;
+            // Get AccountNumber
+            var accountNumberId = '{!$Component.form.block.section.accountNumber}';
+            account.AccountNumber = document.getElementById(accountNumberId).value;
+            
+            // Account Table Clear
+            $accountTableBody.children().remove();
+
+            // RemoteAction: Get Accounts
+            RemoteActionSearchController.getAccounts(JSON.stringify(account), function(results, event){
+                if(event.status) {
+                    for (var i = 0; i < results.length; i++) {
+                        addAccount(results[i]);
+                    }
+                }
+            });
+            
+            return false;
+        }
+        
+        // Get AccountField
+        function getAccountField() {
+            var account = {
+                Name : '',
+                AccountNumber : ''
+            };
+            
+            return account;
+        }
+
+        // Add Account
+        function addAccount(record) {
+            // Account Name
+            var $accountName = $j('<td>' + record.Name +'</td>');
+            // Owner Name
+            var $ownerName = $j('<td>' + record.AccountNumber +'</td>');
+            // Append
+            var $tr = $j('<tr></tr>')
+                        .append($accountName)
+                        .append($ownerName);
+            // Add Table
+            $accountTableBody.append($tr);
+        }
+    </script>
+</apex:page>

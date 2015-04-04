@@ -1,0 +1,38 @@
+<apex:page controller="RemoteActionSearchController" tabStyle="Account" readOnly="true" id="page">
+    
+    <apex:includeScript value="https://code.jquery.com/jquery-2.1.3.min.js" />
+    <apex:include pageName="RemoteActionSearchCss" />
+    
+    <div id="vf-page">
+        <apex:form id="form">
+            <apex:pageBlock title="{!$ObjectType.Account.Label}" id="block">
+                <apex:pageBlockButtons location="bottom" id="buttons">
+                    <apex:commandButton value=" Search " onclick="return doSearch();" id="searchBtn" />
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection id="section">
+                    <apex:inputField value="{!account.Name}" required="false" id="accountName" />
+                    <apex:inputField value="{!account.AccountNumber}" required="false" id="accountNumber" />
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            <!-- Results -->
+            <apex:pageBlock id="resultBlock">
+                <table cellpadding="0" cellspacing="0" class="accountTable">
+                    <colgroup>
+                        <col width="600" />
+                        <col />
+                    </colgroup>
+                    <thead>
+                        <th>
+                            <apex:outputText value="{!$ObjectType.Account.Fields.Name.Label}" />
+                        </th>
+                        <th>
+                            <apex:outputText value="{!$ObjectType.Account.Fields.AccountNumber.Label}" />
+                        </th>
+                    </thead>
+                    <tbody id="accountTableBody"></tbody>
+                </table>
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+    <apex:include pageName="RemoteActionSearchScript" />
+</apex:page>

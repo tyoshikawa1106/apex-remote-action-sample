@@ -1,0 +1,24 @@
+<apex:page >
+    <style type="text/css">
+        #vf-page * {
+            font-family: "ProximaNovaSoft-Regular", Calibri, 
+                "Gill Sans", "Gill Sans MT", Candara, Segoe, "Segoe UI", 
+                 Arial, sans-serif;
+        }
+
+        #vf-page .accountTable {
+            width: 100%;
+        }
+
+        #vf-page table.accountTable th,
+        #vf-page table.accountTable td {
+            border-bottom: 1px solid #4a4a56;
+            padding: 5px;
+            color: #4a4a56;
+        }
+
+        #vf-page table.accountTable tr:hover td {
+            font-weight: bold;
+        }
+    </style>
+</apex:page>
