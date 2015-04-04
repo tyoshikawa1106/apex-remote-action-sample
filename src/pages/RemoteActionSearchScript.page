@@ -47,12 +47,12 @@
         function addAccount(record) {
             // Account Name
             var $accountName = $j('<td>' + record.Name +'</td>');
-            // Owner Name
-            var $ownerName = $j('<td>' + record.AccountNumber +'</td>');
+            // AccountNumber
+            var $accountNumber = $j('<td>' + record.AccountNumber +'</td>');
             // Append
             var $tr = $j('<tr></tr>')
                         .append($accountName)
-                        .append($ownerName);
+                        .append($accountNumber);
             // Add Table
             $accountTableBody.append($tr);
         }
