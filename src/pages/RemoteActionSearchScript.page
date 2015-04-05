@@ -24,9 +24,9 @@
             // RemoteAction: Get Accounts
             RemoteActionSearchController.getAccounts(JSON.stringify(account), function(results, event){
                 if(event.status) {
-                    for (var i = 0; i < results.length; i++) {
-                        addAccount(results[i]);
-                    }
+                    results.forEach(function(result) {
+                        addAccount(result);
+                    });
                 }
             });
             
